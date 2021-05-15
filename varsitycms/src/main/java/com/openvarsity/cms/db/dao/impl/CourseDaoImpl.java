@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,5 +45,26 @@ public class CourseDaoImpl extends AbstractDaoImpl<CourseDTO,Long, Course, Cours
     @Override
     protected List<Course> toEntity(List<CourseDTO> dtos) {
         return dtos.stream().map(this::toEntity).collect(Collectors.toList());
+    }
+
+    @Override
+    public Long createCourse(CourseDTO courseDTO) {
+        final CourseDTO course = save(courseDTO);
+        return course.getId();
+    }
+
+    @Override
+    public CourseDTO findCourseById(Long id) {
+        Optional<CourseDTO> course = find(id);
+        return course.orElse(null);
+    }
+
+    @Override
+    public Long updateCourse(CourseDTO courseDTO) {
+        CourseDTO updatedCourseDto = update(courseDTO);
+        if(updatedCourseDto!=null){
+            return updatedCourseDto.getId();
+        }
+        return null;
     }
 }
