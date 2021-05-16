@@ -31,11 +31,11 @@ The assignment is designed to check your coding and problem-solving skills. Plea
 
 ####What we evaluate in the code?
 * Domain driven design (usage of DDD concepts: entities, value objects, services, repositories etc)
-* Messaging (Commands and Events)
-* Code organization (modularity, dependencies between modules, etc)
-* Exception handling and logging
-* Writing and organizing tests
+    * Messaging (Commands and Events)
+    * Code organization (modularity, dependencies between modules, etc)
+    * Exception handling and logging
+    * Writing and organizing tests
 * What we expect to see in the README?
-* Architectural overview (knowledge of distributed services, cloud platforms)
-* Tools and technologies you used (libraries, framework, tools, storage types, cloud platform features)
-* What you think can be improved and how?
+    * Architectural overview (knowledge of distributed services, cloud platforms)
+    * Tools and technologies you used (libraries, framework, tools, storage types, cloud platform features)
+    * What you think can be improved and how?

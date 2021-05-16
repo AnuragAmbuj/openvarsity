@@ -11,14 +11,18 @@ import javax.persistence.Table;
 @Entity
 @Data
 public class Course extends AbstractEntity {
-
     @Column(name = "course_name")
     private String courseName;
 
-    @Column(name = "description")
-    private String general_description;
+    @Column(name = "course_image_id")
+    private String courseImageId;
 
-    @Column(name = "syllabus")
+    @Column(name = "introductory_video_clip_id")
+    private String introductoryVideoClipId;
+
+    @Column(name = "description", columnDefinition = "LONGTEXT")
+    private String generalDescription;
+
+    @Column(name = "syllabus", columnDefinition = "LONGTEXT")
     private String syllabus;
-
 }

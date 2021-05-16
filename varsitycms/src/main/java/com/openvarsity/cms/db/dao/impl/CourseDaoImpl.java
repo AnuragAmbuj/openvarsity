@@ -2,9 +2,10 @@ package com.openvarsity.cms.db.dao.impl;
 
 import com.openvarsity.base.db.AbstractDaoImpl;
 import com.openvarsity.cms.db.dao.CourseDao;
-import com.openvarsity.cms.db.dto.CourseDTO;
+import com.openvarsity.cms.db.dto.CourseDto;
 import com.openvarsity.cms.db.entity.Course;
 import com.openvarsity.cms.db.repo.CourseRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class CourseDaoImpl extends AbstractDaoImpl<CourseDTO,Long, Course, CourseRepository> implements CourseDao {
+@Slf4j
+public class CourseDaoImpl extends AbstractDaoImpl<CourseDto,Long, Course, CourseRepository> implements CourseDao {
 
     @Autowired
     private ModelMapper modelMapper;
@@ -28,43 +30,54 @@ public class CourseDaoImpl extends AbstractDaoImpl<CourseDTO,Long, Course, Cours
     }
 
     @Override
-    protected CourseDTO toDto(Course entity) {
-        return modelMapper.map(entity,CourseDTO.class);
+    protected CourseDto toDto(Course entity) {
+        return modelMapper.map(entity, CourseDto.class);
     }
 
     @Override
-    protected List<CourseDTO> toDto(List<Course> entities) {
+    protected List<CourseDto> toDto(List<Course> entities) {
         return entities.stream().map(this::toDto).collect(Collectors.toList());
     }
 
     @Override
-    protected Course toEntity(CourseDTO dto) {
+    protected Course toEntity(CourseDto dto) {
         return modelMapper.map(dto,Course.class);
     }
 
     @Override
-    protected List<Course> toEntity(List<CourseDTO> dtos) {
+    protected List<Course> toEntity(List<CourseDto> dtos) {
         return dtos.stream().map(this::toEntity).collect(Collectors.toList());
     }
 
     @Override
-    public Long createCourse(CourseDTO courseDTO) {
-        final CourseDTO course = save(courseDTO);
-        return course.getId();
+    public CourseDto createCourse(CourseDto courseDTO) {
+        final CourseDto course = save(courseDTO);
+        //TODO index and stuff
+        return course;
     }
 
     @Override
-    public CourseDTO findCourseById(Long id) {
-        Optional<CourseDTO> course = find(id);
+    public CourseDto findCourseById(Long id) {
+        Optional<CourseDto> course = find(id);
+        //TODO caching and stuff
         return course.orElse(null);
     }
 
     @Override
-    public Long updateCourse(CourseDTO courseDTO) {
-        CourseDTO updatedCourseDto = update(courseDTO);
-        if(updatedCourseDto!=null){
-            return updatedCourseDto.getId();
+    public CourseDto updateCourse(CourseDto courseDTO) {
+        return update(courseDTO);
+    }
+
+    @Override
+    public CourseDto updateCourseImage(Long courseId, String imageId){
+        final Optional<Course> courseOptional = getRepository().findById(courseId);
+        if(courseOptional.isPresent()){
+            Course course = courseOptional.get();
+            course.setCourseImageId(imageId);
+            course = getRepository().save(course);
+            return toDto(course);
+        }else{
+            return null;
         }
-        return null;
     }
 }

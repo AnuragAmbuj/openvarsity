@@ -6,8 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Slf4j
-public class CourseDTO extends AbstractDataDto {
+public class CourseDto extends AbstractDataDto {
     private String courseName;
+    private String courseImageId;
+    private String introductoryVideoClipId;
     private String generalDescription;
     private String syllabus;
 }
