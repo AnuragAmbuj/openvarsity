@@ -34,7 +34,7 @@ public class CourseManagementController extends AbstractController {
         return courseService.createCourse(request);
     }
 
-    @PutMapping(path = "/update/{id}", consumes = "application/json")
+    @PutMapping(path = "/update", consumes = "application/json")
     public CourseDto updateCourse(@RequestBody CourseDto courseDto, BindingResult bindingResult, HttpServletRequest httpServletRequest){
         handleBindingResult(bindingResult);
         return courseService.updateCourse(courseDto);

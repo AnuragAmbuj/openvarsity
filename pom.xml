@@ -11,7 +11,8 @@
     <modules>
         <module>shared-base</module>
         <module>varsitycms</module>
-        <module>elastic-client</module>
+        <module>authentication</module>
+        <module>imgservice</module>
     </modules>
 
     <properties>

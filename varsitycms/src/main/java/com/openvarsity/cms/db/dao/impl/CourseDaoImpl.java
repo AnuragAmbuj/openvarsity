@@ -54,12 +54,8 @@ public class CourseDaoImpl extends AbstractDaoImpl<CourseDto, Long, Course, Cour
     }
 
     @Override
-    @Caching(evict = {@CacheEvict(value = "usersList", allEntries = true),}, put = {
-            @CachePut(value = "courses", key = "#courseDTO.id")
-    })
     public CourseDto saveCourse(CourseDto courseDTO) {
         final CourseDto course = save(courseDTO);
-        //TODO index and stuff
         return course;
     }
 
