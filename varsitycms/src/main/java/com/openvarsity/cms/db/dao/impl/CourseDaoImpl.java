@@ -8,6 +8,10 @@ import com.openvarsity.cms.db.repo.CourseRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class CourseDaoImpl extends AbstractDaoImpl<CourseDto,Long, Course, CourseRepository> implements CourseDao {
+public class CourseDaoImpl extends AbstractDaoImpl<CourseDto, Long, Course, CourseRepository> implements CourseDao {
 
     @Autowired
     private ModelMapper modelMapper;
@@ -41,7 +45,7 @@ public class CourseDaoImpl extends AbstractDaoImpl<CourseDto,Long, Course, Cours
 
     @Override
     protected Course toEntity(CourseDto dto) {
-        return modelMapper.map(dto,Course.class);
+        return modelMapper.map(dto, Course.class);
     }
 
     @Override
@@ -50,16 +54,19 @@ public class CourseDaoImpl extends AbstractDaoImpl<CourseDto,Long, Course, Cours
     }
 
     @Override
-    public CourseDto createCourse(CourseDto courseDTO) {
+    @Caching(evict = {@CacheEvict(value = "usersList", allEntries = true),}, put = {
+            @CachePut(value = "courses", key = "#courseDTO.id")
+    })
+    public CourseDto saveCourse(CourseDto courseDTO) {
         final CourseDto course = save(courseDTO);
         //TODO index and stuff
         return course;
     }
 
     @Override
+    @Cacheable(value = "courses", key = "#id")
     public CourseDto findCourseById(Long id) {
         Optional<CourseDto> course = find(id);
-        //TODO caching and stuff
         return course.orElse(null);
     }
 
@@ -69,14 +76,14 @@ public class CourseDaoImpl extends AbstractDaoImpl<CourseDto,Long, Course, Cours
     }
 
     @Override
-    public CourseDto updateCourseImage(Long courseId, String imageId){
+    public CourseDto updateCourseImage(Long courseId, String imageId) {
         final Optional<Course> courseOptional = getRepository().findById(courseId);
-        if(courseOptional.isPresent()){
+        if (courseOptional.isPresent()) {
             Course course = courseOptional.get();
             course.setCourseImageId(imageId);
             course = getRepository().save(course);
             return toDto(course);
-        }else{
+        } else {
             return null;
         }
     }

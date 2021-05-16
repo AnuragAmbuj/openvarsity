@@ -1,6 +1,7 @@
 package com.openvarsity.cms.utils;
 
 import com.openvarsity.cms.db.dto.CourseDto;
+import com.openvarsity.cms.index.CourseDocument;
 import com.openvarsity.cms.model.CreateCourseRequest;
 import lombok.experimental.UtilityClass;
 

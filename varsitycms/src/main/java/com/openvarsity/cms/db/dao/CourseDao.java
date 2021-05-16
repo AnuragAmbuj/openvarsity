@@ -5,7 +5,7 @@ import com.openvarsity.cms.db.dto.CourseDto;
 
 public interface CourseDao extends AbstractDao<CourseDto,Long> {
 
-    CourseDto createCourse(CourseDto courseDTO);
+    CourseDto saveCourse(CourseDto courseDTO);
     CourseDto findCourseById(Long id);
     CourseDto updateCourse(CourseDto courseDTO);
 
