@@ -3,7 +3,7 @@
 OpenVarsity Backend (0.0.1-alpha01)
 ---
 
-#### NOTE: This is strictly a personal project with business use-cases. Copying or redestribution of code in any form or manner possible without a written approval from the owner is prohibited. Kindly do not feel entitled to contribute, fork or raise a pull request, in any manner possible without a prior written approval from the owner. Read the license file carefully.
+#### NOTE: This is strictly a personal project with business use-cases. Copying or redistribution of code in any form or manner possible without a written approval from the owner is prohibited. Kindly do not feel entitled to contribute, fork or raise a pull request, in any manner possible without a prior written approval from the owner. Read the license file carefully.
 
 ### Online MOOC System.
 
