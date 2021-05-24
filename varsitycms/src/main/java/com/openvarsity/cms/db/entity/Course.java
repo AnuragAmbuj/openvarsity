@@ -14,6 +14,12 @@ public class Course extends AbstractEntity {
     @Column(name = "course_name")
     private String courseName;
 
+    @Column(name = "course_title")
+    private String courseTitle;
+
+    @Column(name = "course_summary", columnDefinition = "LONGTEXT")
+    private String courseSummary;
+
     @Column(name = "course_image_id")
     private String courseImageId;
 

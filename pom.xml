@@ -11,8 +11,9 @@
     <modules>
         <module>shared-base</module>
         <module>varsitycms</module>
-        <module>authentication</module>
-        <module>imgservice</module>
+        <module>imageservice</module>
+        <module>authenticationservice</module>
+        <module>configservice</module>
     </modules>
 
     <properties>

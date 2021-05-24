@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CourseDto extends AbstractDataDto {
     private String courseName;
+    private String courseTitle;
+    private String courseSummary;
     private String courseImageId;
     private String introductoryVideoClipId;
     private String generalDescription;

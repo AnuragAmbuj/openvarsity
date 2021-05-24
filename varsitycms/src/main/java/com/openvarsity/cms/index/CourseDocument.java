@@ -13,6 +13,12 @@ public class CourseDocument extends AbstractDocument {
     @Field(type = FieldType.Text, name = "course_name")
     private String courseName;
 
+    @Field(type = FieldType.Text, name = "course_title")
+    private String courseTitle;
+
+    @Field(type = FieldType.Text, name = "course_summary")
+    private String courseSummary;
+
     @Field(type = FieldType.Text, name = "course_image_id")
     private String courseImageId;
 
