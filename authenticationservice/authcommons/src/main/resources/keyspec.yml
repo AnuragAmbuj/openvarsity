@@ -1,0 +1,3 @@
+crypt:
+  secret: "NotSoSecret"
+  salt: "SimpleSalt"
