@@ -1,9 +1,9 @@
 ![](imgs/openvarsity.png)
 
-OpenVarsity Backend (0.0.1-alpha01)
+OpenVarsity Backend
 ---
 
-#### NOTE: This is strictly a personal project with business use-cases. Copying or redistribution of code in any form or manner possible without a written approval from the owner, is prohibited. Read the license file carefully.
+#### NOTE: This is strictly a personal project and still in early stages of development with business use-cases. 
 
 ### Online MOOC System.
 
@@ -28,3 +28,4 @@ OpenVarsity Backend (0.0.1-alpha01)
 * As a student, I can filter webinars & videos by course, subjects, tags.
 * As a student, when I am playing a video or a webinar, I can get personalized suggestions of courses/webinars.
 
+Copying or redistribution of code in any form or manner possible without a written approval from the owner, is prohibited. Read the license file carefully.
